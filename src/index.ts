@@ -1,7 +1,17 @@
-import * as express from "express";
-const app = express();
-const port = 3000;
+import * as Express from 'express';
+import expressListEndpoints from 'express-list-endpoints';
+import article from './routes/article';
+import auth from './routes/auth';
+import user from './routes/user';
 
-app.get('/', (req, res) => res.send('Hello World!'));
+const app = Express();
 
-app.listen(port, () => console.log(`Exampleeee app listening on port ${port}!`));
+app.use('/article', article);
+app.use('/auth', auth);
+app.use('/user', user);
+
+app.listen(3000, () => {
+    console.log('Listen started at port 3000.');
+});
+
+export default app;
